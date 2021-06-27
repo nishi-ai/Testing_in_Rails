@@ -71,6 +71,30 @@ insert error png
     click_on 'Create Product'
 
     # Should be redirected to Home with new product
-    assert_selector root_path, page.current_path
-    assert_selector "AI product made by ai"
+    assert_equal root_path, page.current_path
+    assert_text "AI product made by ai"
+  end
+
+
+Unit Test
+run rails test:models = only test models
+# test/models/user_test.rb
+
+test "full_name returns the capitalised first name and last name" do
+    user = User.new(first_name: 'Ai', last_name: 'Nishikawa')
+    
+    assert_equal 'Ai Nishikawa', user.full_name
+  end
+
+run rails test:models = only test models
+
+insert error message
+
+of course we do not have column of full_name
+
+how to solve?
+go User model and create a full_name definition
+
+def full_name
+    "#{first_name.capitalize} #{last_name.capitalize}"
   end
